@@ -1,0 +1,174 @@
+<!DOCTYPE html>>
+<html>
+    <body>
+
+    </body>
+    <script>
+        
+        var u1="https://5cdd0a92b22718001417c19d.mockapi.io/api/users";
+        var my1=fetch(u1);
+        var u2="https://5cdd0a92b22718001417c19d.mockapi.io/api/books";
+        var my2=fetch(u1);
+        var u3="https://5cdd0a92b22718001417c19d.mockapi.io/api/doctors";
+        var my3=fetch(u1);
+        var u4="https://5cdd0a92b22718001417c19d.mockapi.io/api/products";
+        var my4=fetch(u1);
+        Promise.all([my1,my2,my3,my4])
+        my1.then((data)=>{
+        
+            return data.json();
+        
+        }).then(response=>{
+            generate_tbl(response);
+            console.log("1");
+        
+        })
+        my2.then((data1)=>{
+    
+            return data1.json();
+        
+        }).then(response=>{
+            generate_tbl(response);
+            console.log("2");
+            
+        })
+        my3.then((data2)=>{
+            return data2.json();
+            
+        }).then(response=>{
+            generate_tbl(response);
+            console.log("3");
+        
+        })
+        my4.then((data3)=>{
+            return data3.json();
+        
+        }).then(response=>{
+            generate_tbl(response);
+            console.log("4");
+            
+        })
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        
+        function generate_tbl(data) {
+        len1=data.length;
+        col1=Object.keys(data[0]).length;
+          var body1 = document.getElementsByTagName("body")[0];
+          var div1=document.createElement('div');
+          var tbl = document.createElement("table");
+          tb1.setAttribute("class","table table-bordered");
+          tb1.style.width="100%";
+          tb1.style.cellspacing="0";
+          tbl.style.id="dataTable";
+          var tblhead = document.createElement("thead");
+          var trow = document.createElement("tr");
+          for (var k = 0; k <col1; k++) {
+          var cellr = document.createElement("th");
+          cellr.innerHTML=Object.keys(data[0])[k];
+          trow.appendChild(cellr);
+          
+          }
+          tblhead.appendChild(trow);
+          tbl.appendChild(tblhead);
+          
+          var tblBody = document.createElement("tbody");
+          for (var i = 0; i <len1; i++) {
+            var row = document.createElement("tr");
+            for (var j = 0; j <col1; j++) {
+              var cell = document.createElement("td");
+              cell.id='row'+i+'column'+j;
+              cell.innerHTML=data[i][Object.keys(data[i])[j]];
+              row.appendChild(cell);
+            }
+        
+            tblBody.appendChild(row);
+          }
+          tbl.appendChild(tblBody);
+          div1.appendChild(tbl);
+          tbl.setAttribute("border", "1");
+          tbl.style.width='50%';
+          body1.appendChild(div1);
+          document.getElementById("id").appendChild(div1);
+          } 
+          /////////////////////////////////////////////////////
+               document.getElementById("ask").innerHTML='loading';
+               let url="https://5cdd0a92b22718001417c19d.mockapi.io/api/users";
+                fetch(url).then((promise)=>{
+                    return promise.json()
+                }).then((data)=>{
+                    document.getElementById('ask').innerHTML='';
+                    generate_tbl(data);
+                    console.log(data);
+
+                    let url1="https://5cdd0a92b22718001417c19d.mockapi.io/api/books";
+                fetch(url1).then((promise)=>{
+                    return promise.json()
+                }).then((data)=>{
+                    generate_tbl(data);
+                    console.log(data);
+
+                    let url2="https://5cdd0a92b22718001417c19d.mockapi.io/api/doctors";
+                fetch(url2).then((promise)=>{
+                    return promise.json()
+                }).then((data)=>{
+                    generate_tbl(data);
+                    console.log(data);
+
+                    let url3="https://5cdd0a92b22718001417c19d.mockapi.io/api/products";
+                fetch(url3).then((promise)=>{
+                    return promise.json()
+                }).then((data)=>{
+                    generate_tbl(data);
+                    console.log(data);
+                })
+                })
+                
+                })
+                })
+                ///////////////////////////
+                var u1="https://5cdd0a92b22718001417c19d.mockapi.io/api/users";
+        var my1=fetch(u1);
+        var u2="https://5cdd0a92b22718001417c19d.mockapi.io/api/books";
+        var my2=fetch(u1);
+        var u3="https://5cdd0a92b22718001417c19d.mockapi.io/api/doctors";
+        var my3=fetch(u1);
+        var u4="https://5cdd0a92b22718001417c19d.mockapi.io/api/products";
+        var my4=fetch(u1);
+        Promise.all([my1,my2,my3,my4])
+        my1.then((data)=>{
+        
+            return data.json();
+        
+        }).then(response=>{
+            generate_tbl(response);
+            
+        
+        })
+        my2.then((data1)=>{
+    
+            return data1.json();
+        
+        }).then(response=>{
+            generate_tbl(response);
+            
+        })
+        my3.then((data2)=>{
+            return data2.json();
+            
+        }).then(response=>{
+            generate_tbl(response);
+        
+        })
+        my4.then((data3)=>{
+            return data3.json();
+        
+        }).then(response=>{
+            generate_tbl(response);
+            
+        })
+
+       
+
+
+    </script>
+</html>

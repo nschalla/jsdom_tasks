@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <div id="load">
+
+    </div>
+
+
+</body>
+    <script>
+let url="https://5cdd0a92b22718001417c19d.mockapi.io/api/users";
+myurl=fetch(url);
+let output=document.getElementById("load");
+
+ myurl.then(function(reponse){
+     return reponse.json()
+   
+
+ })
+ .then(function(data){
+
+    console.log(data);
+     for(i=0;i<data.length;i++)
+     {
+        
+     output.innerHTML+="username="+data[i].username+"<br>";
+     }
+
+
+ })
+
+
+</script>
+
+</html>
+
+

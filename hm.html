@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <body>
+
+    </body>
+    <script>
+        //create a skeleton for card
+        var spacediv = document.createElement("div");
+        spacediv.setAttribute("class","space"); 
+        var objectdiv = document.createElement("div");
+        objectdiv.setAttribute("class","object"); 
+        var frontdiv = document.createElement("div");
+        frontdiv.setAttribute("class","cfront common"); 
+        frontdiv.innerHTML="hello";
+        var backdiv = document.createElement("div");
+        backdiv.setAttribute("class","cback common");
+        backdiv.innerHTML="back";
+        objectdiv.appendChild(frontdiv);
+        objectdiv.appendChild(backdiv);
+        spacediv.appendChild(objectdiv);
+        document.body.appendChild(spacediv);
+        // styling divs
+        spacediv.style.width="200px";
+        spacediv.style.height="200px";        
+        spacediv.style.perspective="600px";
+        spacediv.style.border="1px solid #CCC"
+        spacediv.style.margin="40px 0";
+
+
+        objectdiv.style.position="relative";
+        objectdiv.style.height="100%";
+        objectdiv.style.width="100%";
+        objectdiv.style.backfaceVisibility="hidden"; 
+        objectdiv.style. transform="1s";
+        objectdiv.style.transformStyle="preserve-3d";
+        objectdiv.style.cursor="pointer";
+        objectdiv.position="relative";
+
+        for(var i=0;i<=1;i++)
+        {
+        var common=document.getElementsByClassName('common')[i];
+        common.style.position="absolute";
+        common.style.width="100%";
+        common.style.height="100%";
+        common.style.lineheight="260px";
+        common.style.color="white";
+        common.style.textalign="center";
+        common.style.fontweight="bold";
+        common.style.fontsize="40px";
+        common.style.webkitbackfacevisibility= "hidden";
+        common.style.backfacevisibility=" hidden";
+        }
+      
+         var flipped=document.getElementsByClassName("is-filpped")[0];
+        flipped.style.transform="rotateY(180deg)";
+
+      
+        frontdiv.style.background="red"
+        backdiv.style.background="yellow";
+        backdiv.style.transform="rotateY(180deg)";
+
+        var card = document.querySelector('.object');
+        card.addEventListener( 'click', function() {
+            alert("hello");
+        card.classList.toggle('is-flipped');
+});
+    </script>
+
+</html>

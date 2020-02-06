@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">        <script src="bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    </head>
+    <body>
+      
+     
+    </body>
+    <script>
+        let data=[
+     {
+          "productName" : "T-Shirt",
+          "basePrice" : 500,
+          "image" : "http://placehold.it/200x200",
+          "description" : "Des",
+          "varients" : [
+               {
+                    "type" : "Size",
+                    "values" : ["xl","xxl"]
+               },
+               {
+                    "type" : "Meterial",
+                    "values" : ["cotton","silk"]
+               },
+               {
+                    "type" : "Color",
+                    "values" : ["yellow","red"]
+               }
+          ],
+          "varientDetails" : [
+               {
+                    "size" : "xl",
+                    "meterial" : "cotton",
+                    "color" : "red",
+                    "addOnprice" : 30
+               },
+               {
+                    "size" : "xl",
+                    "meterial" : "cotton",
+                    "color" : "yellow",
+                    "addOnprice" : 40
+               },
+               {
+                    "size" : "xl",
+                    "meterial" : "silk",
+                    "color" : "red",
+                    "addOnprice" : 50
+               },
+               {
+                    "size" : "xl",
+                    "meterial" : "silk",
+                    "color" : "yellow",
+                    "addOnprice" : 60
+               },
+               {
+                    "size" : "xxl",
+                    "meterial" : "cotton",
+                    "color" : "red",
+                    "addOnprice" : 70
+               },
+               {
+                    "size" : "xxl",
+                    "meterial" : "cotton",
+                    "color" : "yellow",
+                    "addOnprice" : 80
+               },
+               {
+                    "size" : "xxl",
+                    "meterial" : "silk",
+                    "color" : "red",
+                    "addOnprice" : 90
+               },
+               {
+                    "size" : "xxl",
+                    "meterial" : "silk",
+                    "color" : "yellow",
+                    "addOnprice" : 100
+               }
+          ]
+     },
+     {
+          "productName" : "Saree",
+          "basePrice" : 5000,
+          "image" : "http://placehold.it/200x200",
+          "description" : "Des",
+          "varients" : [
+               {
+                    "type" : "Meterial",
+                    "values" : ["cotton","silk"]
+               },
+               {
+                    "type" : "Color",
+                    "values" : ["yellow","red"]
+               }
+          ],
+          "varientDetails" : [
+               {
+                    "meterial" : "cotton",
+                    "color" : "red",
+                    "addOnprice" : 30
+               },
+               {
+                    "meterial" : "cotton",
+                    "color" : "yellow",
+                    "addOnprice" : 40
+               },
+               {
+                    "meterial" : "silk",
+                    "color" : "red",
+                    "addOnprice" : 50
+               },
+               {
+                    "meterial" : "silk",
+                    "color" : "yellow",
+                    "addOnprice" : 60
+               }
+          ]
+     }
+]
+    var row=document.createElement("div");
+    row.setAttribute("class","row");
+    document.body.appendChild(row);
+
+    var maindiv=document.createElement("div");
+    maindiv.setAttribute("class","col-8");
+    maindiv.id="maindiv";
+    row.appendChild(maindiv);
+
+   
+    
+    var cartdiv=document.createElement("div");
+    cartdiv.setAttribute("class","col-4");
+    cartdiv.id="cartdiv";
+    var cartitems=document.createElement("div");
+    cartitems.id="cartitems";
+    var amountdiv=document.createElement("div");
+    amountdiv.id="amount";
+    cartdiv.appendChild(cartitems);
+    cartdiv.appendChild(amountdiv);
+    row.appendChild(cartdiv);
+   
+
+    let count=0;
+     data.forEach(element=>
+     {
+    let card=document.createElement("div");
+    card.setAttribute("class","card");
+    card.style.width="18rem";
+    card.id=count;
+    maindiv.appendChild(card);
+
+
+    let img=document.createElement("img");
+    img.src=element.image;
+    img.setAttribute("class","card-img-top");
+    card.appendChild(img);
+
+
+    let cardbody=document.createElement("div");
+    cardbody.setAttribute("class","card-body");
+    card.appendChild(cardbody);
+
+    let cardtitle=document.createElement("h5");
+    cardtitle.setAttribute("class","card-title");
+    cardtitle.innerHTML=element.productName;
+    cardtitle.id="card"+count;
+    cardbody.appendChild(cardtitle);
+
+    let cardcost=document.createElement("h4");
+    cardcost.setAttribute("class","card-cost");
+    cardcost.innerHTML=element.basePrice;
+    cardcost.id="cardcost"+count;
+    cardbody.appendChild(cardcost);
+
+    let cardtext=document.createElement("p");
+    cardtext.setAttribute("class","card-text");
+    cardtext.innerHTML=element.description;
+    cardbody.appendChild(cardtext);
+
+    var form=document.createElement("form");
+    form.id="form"+count;
+    element.varients.forEach(varient=>{
+    var select=document.createElement("select");
+    select.id="select"+count;
+    varient.values.forEach(value=>{
+        var option=document.createElement("option");
+        option.innerHTML=value;
+        select.appendChild(option);
+       
+    })
+
+    form.appendChild(select);
+   
+    })
+     cardbody.appendChild(form);
+    var cartbutton=document.createElement("button");
+    cartbutton.innerHTML="ADD TO CART";
+    cartbutton.id="cart"+count;
+    cartbutton.setAttribute("onclick","createcart('"+card.id+"','"+element.basePrice+"','"+element.productName+"','"+form.id+"')");
+    card.appendChild(cartbutton);
+    count=count+1;
+})
+   
+let totalAmount=0;
+function createcart(id,cost,title,formid)
+{
+    let vars=data[parseInt(id)].varientDetails;
+    //console.log(vars);
+    x = document.getElementById(formid);
+    let combo=[];
+    let match = true;
+     for(let i=0;i<x.length;i++)
+     {
+     combo.push(x.elements[i].value)
+     }
+    
+     vars.forEach((val)=>{
+          let nval=Object.values(val);
+          let match=true;
+         // console.log(combo);
+         // console.log(nval);
+
+          combo.forEach((Element)=>{
+            //console.log("coming")
+            if(nval.includes(Element))
+            {
+               // console.log("ns");
+            }
+            else{
+                 match=false;
+                // console.log("nnbsdjud");
+            }
+
+     })
+     if(match===true)
+     {
+          let cdiv=document.createElement("div");
+          let rate=parseInt(val.addOnprice)+parseInt(data[id].basePrice);
+         // console.log(rate);
+          totalAmount+=rate;
+         // console.log(totalAmount);
+          cdiv.innerHTML=title+" "+rate;
+          document.getElementById("cartitems").appendChild(cdiv); 
+          let br=document.createElement("br");
+          document.getElementById("cartitems").appendChild(br);
+          document.getElementById("amount").innerHTML = "TOTAL "+totalAmount;
+          return false;
+
+      }
+
+
+     })
+     
+
+     
+}
+
+     
+
+
+
+    </script>
+</html>

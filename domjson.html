@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    </head>
+    <body>
+
+    </body>
+    <script>
+            var json=[];
+            object={};
+            json.push(object);
+            //console.log(json);
+        //create a div with class for product and getting input.
+        var maindiv=document.createElement("div");
+        maindiv.setAttribute("class","divmain");
+        var prod=document.createElement("h1");
+        prod.innerHTML="Product";
+        prod.id="product";
+        var proinput = document.createElement("INPUT");
+        proinput.setAttribute("type", "text");
+        proinput.id="prodid";
+        maindiv.appendChild(prod);
+        maindiv.appendChild(proinput);
+        document.body.appendChild(maindiv);
+
+//create a div with class for product price and getting input.
+        var maindiv=document.createElement("div");
+        maindiv.setAttribute("class","divprice");
+        var prod=document.createElement("h1");
+        prod.innerHTML="price";
+        var proinput = document.createElement("INPUT");
+        proinput.setAttribute("type", "text");
+        proinput.id="prodprice";
+        maindiv.appendChild(prod);
+        maindiv.appendChild(proinput);
+        document.body.appendChild(maindiv);
+//create a div with class for product description and getting input.
+        var maindiv=document.createElement("div");
+        maindiv.setAttribute("class","divdesc");
+        var prod=document.createElement("h1");
+        prod.innerHTML="Descripiton";
+        var proinput = document.createElement("INPUT");
+        proinput.setAttribute("type", "text");
+        proinput.id="proddesc";
+        maindiv.appendChild(prod);
+        maindiv.appendChild(proinput);
+        document.body.appendChild(maindiv);
+
+//create a div with class for product varient and get varient as input and craete a  sizes for that
+        var proddesc=document.createElement("h1");
+        proddesc.innerHTML="varients";
+
+        var btndiv = document.createElement("div");
+        btndiv.setAttribute("class","divvarient"); 
+        var varinput = document.createElement("INPUT");
+        varinput.setAttribute("type", "text");
+        varinput.id="varient"
+        var btn = document.createElement("BUTTON");
+        btn.id="varient_button"
+        btn.innerHTML="varient";
+        btn.onclick=createvarient;
+        btndiv.appendChild(proddesc);
+        btndiv.appendChild(varinput);
+        btndiv.appendChild(btn);
+        document.body.appendChild(btndiv);
+        
+ let varienttypesarray=[];
+function createvarient()
+        { 
+                var varientinput=document.getElementById("varient").value.split(",");
+                //console.log(varientinput);
+                var varienttype=document.createElement("div");
+                varienttype.setAttribute("class","varientdiv");
+                document.body.appendChild(varienttype);
+                //console.log(varientinput.length);
+                for(var i=0;i<varientinput.length;i++)
+                {
+                  var heading=document.createElement("p");
+                  varienttype.appendChild(heading);
+                  heading.innerHTML+=varientinput[i];
+                  var varsinput = document.createElement("INPUT");
+                  varsinput.setAttribute("type", "text");
+                  var array= varsinput.id="varienttype"+i;
+                  varienttypesarray.push(array);
+
+              
+                  varienttype.appendChild(varsinput);
+                }
+               // console.log(varienttypesarray);
+                
+              
+
+               //generate the combination button
+                var combodiv=document.createElement("div");
+                combodiv.setAttribute("class","combodiv");  
+                var combobtn=document.createElement("BUTTON");
+                combobtn.onclick=generatecombo;
+                combobtn.innerHTML="Generate combinations"
+                combodiv.appendChild(combobtn);
+                document.body.appendChild(combodiv);  
+                document.getElementById("varient_button").disabled = true;
+
+
+        }
+        let data=[];                      
+        let obj={};
+        var index=1;
+        var result=[];
+        
+      
+         function generatecombo()
+        { 
+          for(var a=0;a<varienttypesarray.length;a++)
+         
+         {
+           var array=document.getElementById("varienttype"+a).value.split(",");
+          obj[a]=array;
+        }
+              data= Object.values(obj);
+              createvarientfileds(createcombo(data))
+
+
+        }
+
+ function createcombo(data)
+ {
+     var arr=data.slice(index);
+        for(let i=0;i<data[0].length;i++)
+                {
+                  for(j=0;j<arr[0].length;j++)
+                        {
+                                result.push(data[0][i]+"/"+arr[0][j]);
+                        }
+
+                }
+        data[0]=result.slice(0,result.length);
+        result=[];
+        index+=1;
+        if(arr.length>1)
+         {
+                createcombo(data);
+
+
+        }
+        arr=[];
+        console.log(data[0]);
+        return(data[0]);
+       
+
+ }
+ function createvarientfileds(arr){
+         console.log("hello");
+ }
+
+         
+
+
+        
+        
+        
+
+
+     
+
+
+
+
+
+        
+
+
+    </script>
+</html
